@@ -1,0 +1,32 @@
+﻿@model List<InstructorDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>FullName</th>
+            <th>Expertise</th>
+            <th>Courses</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instructor in Model)
+        {
+            <tr>
+                <td>@instructor.FullName</td>
+                <td>@instructor.Expertise</td>
+                <td>
+                    @foreach (var course in instructor.Courses)
+                    {
+                        <span>@course.Name</span>
+                
+                        <br />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

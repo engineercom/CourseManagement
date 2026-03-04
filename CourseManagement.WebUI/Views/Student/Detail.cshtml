@@ -1,0 +1,48 @@
+﻿@model DetailStudentDto
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<table class="table">
+   <thead>
+        <tr>
+            <th>Id</th>
+            <th>Student</th>
+            <th>Email</th>
+            <th>Courses</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.FullName</td>
+            <td>@Model.Email</td>
+            <td>
+                @if (Model.Courses.Any())
+                {
+                    <ul>
+                        @foreach (var course in Model.Courses)
+                        {
+                            <li>@course.Name-@course.Price ₺ </li>
+                            <ul>
+                           @foreach (var item in course.Instructors)
+                            {
+                                    <li><strong>Teacher:</strong>@item.FullName</li>
+                            }
+                            </ul>
+                        }
+                    </ul>
+                
+                
+                }
+                else
+                {
+                    <p>No courses assigned.</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+

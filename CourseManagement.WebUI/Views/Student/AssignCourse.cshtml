@@ -1,0 +1,19 @@
+﻿@model AssignCourseViewModel
+@{
+    ViewData["Title"] = "AssignCourse";
+}
+
+<form method="post" asp-action="AssignCourse" >
+
+    <input type="hidden" asp-for="Id"/>
+    @for (int i = 0; i < Model.Courses.Count; i++)
+        {
+            <div>
+                <input type="hidden" asp-for="Courses[i].Id"/>
+                <input type="checkbox" asp-for="Courses[i].IsSelected"/>
+            @Model.Courses[i].Name
+            </div>
+        }
+        <button type="submit">Save</button>
+</form>
+
